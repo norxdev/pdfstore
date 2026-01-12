@@ -3,11 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Thank You!</title>
+<style>
+  body { font-family: Arial; max-width: 600px; margin: 50px auto; text-align: center; }
+  a { display: inline-block; margin: 20px; padding: 10px 20px; background: #6772e5; color: white; text-decoration: none; border-radius: 5px; }
+</style>
 </head>
 <body>
-<h1>Payment Successful!</h1>
-<p>Click below to download your PDF:</p>
-<p><a href="pdfs/product_1.pdf" download>Download PDF 1</a></p>
-<p><a href="pdfs/product_2.pdf" download>Download PDF 2</a></p>
+
+<h1>Thank You for Your Purchase!</h1>
+<p>Click the button below to download your PDF:</p>
+
+<p id="pdf-link"></p>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const pdf = params.get('pdf');
+
+const pdfLink = document.getElementById('pdf-link');
+
+if(pdf === '1') {
+  pdfLink.innerHTML = `<a href="pdfs/product_1.pdf" download>Download PDF 1</a>`;
+} else if(pdf === '2') {
+  pdfLink.innerHTML = `<a href="pdfs/product_2.pdf" download>Download PDF 2</a>`;
+} else {
+  pdfLink.innerHTML = 'No PDF selected.';
+}
+</script>
+
 </body>
 </html>
